@@ -1094,7 +1094,7 @@ header nav a:hover .svg_img {
 
 .ms-client-item .ms-client-img {
   margin: 15px;
-  padding: 15px ;
+  padding: 15px;
   background-color: #353250;
   border-radius: 10px;
   font-size: 20px;
@@ -1114,6 +1114,8 @@ header nav a:hover .svg_img {
   -webkit-box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
 }
+
+
 
 /** Start Contact Section **/
 .ms-contact .section-title .ligh-title {
