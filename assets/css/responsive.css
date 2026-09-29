@@ -313,6 +313,9 @@
   .ms-project-box .portfolio-img {
     width: 150px;
   }
+  .ms-project-box .portfolio-img img{
+      object-fit: contain;
+  }
 }
 @media only screen and (max-width: 480px) {
   .ms-project-box .portfolio-img {
