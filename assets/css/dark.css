@@ -233,6 +233,14 @@ p {
   animation: lds-ellipsis3 0.6s infinite;
 }
 
+button:focus {
+  box-shadow: none !important;
+}
+
+button:hover {
+  box-shadow: none !important;
+}
+
 @-webkit-keyframes lds-ellipsis1 {
   0% {
     -webkit-transform: scale(0);
@@ -1650,6 +1658,13 @@ li.mixitup-control-active {
   font-weight: 600;
 }
 
+.ms-project-box>p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .ms-project-box .links {
   margin-bottom: 10px;
   color: #999;
@@ -1828,7 +1843,11 @@ li.mixitup-control-active {
   margin-bottom: 5px;
 }
 
-.CaseStudy_Modal .modal-content .modal-body .row>div>div {
+.CaseStudy_Modal .modal-content .modal-body p>b {
+  color: #cdcdcd;
+}
+
+.CaseStudy_Modal .modal-content .CaseStudy_Modal_content_box {
   margin-bottom: 25px;
 }
 
@@ -1841,7 +1860,7 @@ li.mixitup-control-active {
 
 .CaseStudy_Modal .modal-content .modal-body img {
   margin-bottom: 25px;
-  max-height: 500px;
+  max-height: 450px;
   object-fit: contain;
 }
 
@@ -1869,6 +1888,20 @@ li.mixitup-control-active {
 .service-box .main-box:hover .box-back {
   -webkit-transform: rotateY(0deg);
   transform: rotateY(0deg);
+}
+
+.service-box.tools-box .main-box:hover .box-front {
+  -webkit-transform: none;
+  transform: none;
+}
+
+.service-box.tools-box .main-box:hover .box-back {
+  -webkit-transform: none;
+  transform: none;
+}
+
+.service-box.tools-box .main-box .box-front .icon {
+  margin: 8px 0 25px 0;
 }
 
 .service-box .main-box .box-front {
@@ -2194,6 +2227,12 @@ li.mixitup-control-active {
   margin-bottom: 10px;
   text-align: left;
 }
+
+
+/* TOOLS */
+
+
+
 
 /* End Service Section */
 /*===== Sidebar css =====*/
