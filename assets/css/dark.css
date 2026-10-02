@@ -1378,9 +1378,6 @@ button:hover {
 
 .ms-experience .timeline .timeline-item {
   position: relative;
-}
-
-.ms-experience .timeline .timeline-item {
   margin: 0 0 48px 0;
   padding: 30px;
   border-radius: 15px;
@@ -1389,6 +1386,9 @@ button:hover {
   background: #202337;
   height: -webkit-fill-available;
 
+}
+.ms-experience .timeline .timeline-item ul{
+  margin-bottom: 0;
 }
 
 .ms-experience .timeline .timeline-item:last-child {
