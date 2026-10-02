@@ -460,7 +460,7 @@ button:hover {
   font-size: 20px;
   position: fixed;
   top: 50px;
-  right: 12px;
+  right: 20px;
   background: #202337;
   border-radius: 15px;
   cursor: pointer;
@@ -2706,7 +2706,7 @@ footer .ms-footer-detail .ms-social ul li a:hover {
 /* Back to top */
 .progress-wrap {
   position: fixed;
-  right: 15px;
+  right: 20px;
   bottom: 50px;
   height: 45px;
   width: 45px;
