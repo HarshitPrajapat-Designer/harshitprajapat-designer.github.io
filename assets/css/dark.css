@@ -1355,6 +1355,29 @@ button:hover {
   object-fit: contain;
 }
 
+/* ========================================================
+   Tools Load More / Lazy Reveal - Mobile & Tablet Only
+   ======================================================== */
+
+/* Desktop par button hidden rahega */
+.tools-load-more-wrap {
+  display: none;
+}
+
+@keyframes fadeInTool {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
 /*===== Resume css (EXPERIENCE & EDUCATION)=====*/
 .education h4,
 .experiense h4 {
@@ -1388,7 +1411,8 @@ button:hover {
   height: -webkit-fill-available;
 
 }
-.ms-experience .timeline .timeline-item ul{
+
+.ms-experience .timeline .timeline-item ul {
   margin-bottom: 0;
 }
 
@@ -1652,11 +1676,8 @@ li.mixitup-control-active {
   font-weight: 600;
 }
 
-.ms-project-box>p {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.ms-project-box>p>.btn {
+  padding: 0;
 }
 
 .ms-project-box .links {

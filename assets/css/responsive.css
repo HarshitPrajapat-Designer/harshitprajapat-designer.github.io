@@ -278,6 +278,59 @@
   .ms-contact .ms-box:hover:after {
     right: -15%;
   }
+
+  /* Show More button */
+  .tools-load-more-wrap {
+    display: block;
+    margin-top: 25px;
+  }
+
+  /* 6 items ke baad baaki sab hide */
+  #tools-grid-wrapper .tool-item:nth-child(n+7) {
+    display: none;
+  }
+
+  /* Click par baaki items show honge */
+  #tools-grid-wrapper.show-all .tool-item:nth-child(n+7) {
+    display: block;
+    animation: fadeInTool 0.4s ease-in-out forwards;
+  }
+
+
+  .tools-view-more-btn {
+    background: #202337;
+    color: #eee;
+    border: 1px solid #716fff;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .tools-view-more-btn i {
+    transition: transform 0.3s ease-in-out;
+    font-size: 12px;
+    color: #716fff;
+  }
+
+  .tools-view-more-btn:hover {
+    background: #716fff;
+    color: #fff;
+  }
+
+  .tools-view-more-btn:hover i {
+    color: #fff;
+  }
+
+  .tools-view-more-btn.is-open i {
+    transform: rotate(180deg);
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -354,6 +407,23 @@
 
   footer .ms-footer-detail .ms-copy {
     margin-bottom: 15px;
+  }
+
+  /* Show More Code  */
+  .tools-load-more-wrap {
+    display: block;
+    margin-top: 25px;
+  }
+
+  /* 4 items ke baad baaki sab hide */
+  #tools-grid-wrapper .tool-item:nth-child(n+5) {
+    display: none;
+  }
+
+  /* Click par baaki items show honge */
+  #tools-grid-wrapper.show-all .tool-item:nth-child(n+5) {
+    display: block;
+    animation: fadeInTool 0.4s ease-in-out forwards;
   }
 }
 
