@@ -1742,6 +1742,7 @@ li.mixitup-control-active {
 .ms-project-box .portfolio-img img {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  object-fit: contain;
 }
 
 .ms-project-box .portfolio-img .overlay {
@@ -1870,6 +1871,15 @@ li.mixitup-control-active {
   margin-bottom: 25px;
 }
 
+.CaseStudy_Modal .modal-content .CaseStudy_Modal_content_box ul {
+  color: #a5a3b3;
+  list-style: disc;
+}
+
+.CaseStudy_Modal .modal-content .modal-body ul b {
+  color: #cdcdcd;
+}
+
 .CaseStudy_Modal .modal-content .modal-body h3 {
   color: #eee;
   margin-top: 0;
@@ -1881,6 +1891,26 @@ li.mixitup-control-active {
   margin-bottom: 25px;
   max-height: 450px;
   object-fit: contain;
+}
+
+.CaseStudy_Modal .modal-content .modal-body .carousel-indicators {
+  bottom: 5px;
+  margin: 0 0 10px;
+  padding: 30px 0 0;
+  background-image: linear-gradient(#181a2d00, #181a2d 75%)
+}
+
+.CaseStudy_Modal .modal-content .modal-body .carousel-indicators button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  opacity: 1;
+  background-color: #181a2d;
+}
+
+.CaseStudy_Modal .modal-content .modal-body .carousel-indicators button.active {
+  background-color: #716fff;
 }
 
 /*===== Service css =====*/
