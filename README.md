@@ -13,7 +13,7 @@ harshit-portfolio/
 ├── js/
 │   └── main.js                Animations, dark mode button, image loader, 3D background.
 ├── assets/
-│   ├── cv/                    Harshit_Prajapat_CV.pdf   (the Download CV buttons use this)
+│   ├── cv/                    Harshit_Prajapat_UI&UX_Designer.pdf   (the Download CV buttons use this)
 │   └── img/
 │       ├── hero/              Your portrait
 │       ├── portfolio/
@@ -79,7 +79,7 @@ To change a color, edit the variables at the top of `main.css` (parts 1 and 2).
 
 ## CV button
 
-The "Download my CV" buttons download `assets/cv/Harshit_Prajapat_CV.pdf`.
+The "Download my CV" buttons download `assets/cv/Harshit_Prajapat_UI&UX_Designer.pdf`.
 To update your CV, replace that file and keep the same name.
 
 ## Publish on GitHub Pages

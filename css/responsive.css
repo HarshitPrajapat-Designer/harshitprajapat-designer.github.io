@@ -22,15 +22,26 @@
    A. LARGE DISPLAYS  (2000px and wider)
    ========================================================================== */
 @media (min-width: 2000px) {
+
   /* ---- ALL THEMES ---- */
-  .wrap, .topbar__inner { width: min(92rem, 100% - 8rem); }
-  .rail { right: 2.2rem; }
+  .wrap,
+  .topbar__inner {
+    width: min(92rem, 100% - 8rem);
+  }
+
+  .rail {
+    right: 2.2rem;
+  }
 
   /* ---- LIGHT ONLY ---- */
-  :root:not([data-theme="dark"]) body::before { opacity: .3; }
+  :root:not([data-theme="dark"]) body::before {
+    opacity: .3;
+  }
 
   /* ---- DARK ONLY ---- */
-  [data-theme="dark"] body::before { opacity: .18; }
+  [data-theme="dark"] body::before {
+    opacity: .18;
+  }
 }
 
 
@@ -38,9 +49,16 @@
    B. SMALL LAPTOP / TABLET LANDSCAPE  (up to 1100px)
    ========================================================================== */
 @media (max-width: 1100px) {
+
   /* ---- ALL THEMES ---- */
-  .rail { display: none; }                       /* the chapter dots need free space on the right */
-  .craft__grid { grid-template-columns: 1.3fr 1fr; }
+  .rail {
+    display: none;
+  }
+
+  /* the chapter dots need free space on the right */
+  .craft__grid {
+    grid-template-columns: 1.3fr 1fr;
+  }
 
   /* ---- LIGHT ONLY ---- */
   /* (nothing extra needed at this size) */
@@ -54,47 +72,174 @@
    C. TABLET  (up to 900px)
    ========================================================================== */
 @media (max-width: 900px) {
+
   /* ---- ALL THEMES ---- */
-  .topbar__nav { display: none; }                /* top links hidden, the "Let's talk" button stays */
-  h2 { max-width: none; }
-  .lead { margin-bottom: 1.2rem; }
+  .topbar__nav {
+    display: none;
+  }
+
+  /* top links hidden, the "Let's talk" button stays */
+  h2 {
+    max-width: none;
+  }
+
+  .lead {
+    margin-bottom: 1.2rem;
+  }
 
   /* Hello section: text first, 3D images below */
-  .hero { align-items: flex-start; padding: 5.6rem 0 1rem; }
-  .hero__grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  .stage { justify-self: center; width: min(100%, 24rem); margin-top: 1.4rem; }
-  .layer--card-a { left: 0; }
-  .layer--card-b { right: 0; }
-  .chip--1 { left: 2%; }
-  .chip--2 { right: 0; }
-  .chip--4 { top: 3%; }
+  .hero {
+    align-items: flex-start;
+    padding: 5.6rem 0 1rem;
+  }
 
-  .stats { padding: 1.3rem 0; }
-  .stats__grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .stage {
+    justify-self: center;
+    width: min(100%, 24rem);
+    margin-top: 1.4rem;
+  }
+
+  .layer--card-a {
+    left: 0;
+  }
+
+  .layer--card-b {
+    right: 0;
+  }
+
+  .chip--1 {
+    left: 2%;
+  }
+
+  .chip--2 {
+    right: 0;
+  }
+
+  .chip--4 {
+    top: 3%;
+  }
+
+  .stats {
+    padding: 1.3rem 0;
+  }
+
+  .stats__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
 
   /* Scroll scenes: one column */
-  .two-col { grid-template-columns: 1fr; gap: .5rem; }
-  .swap { min-height: 9.5rem; }
-  .scene { aspect-ratio: 4 / 3; }
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: .5rem;
+  }
 
-  .steps { grid-template-columns: 1fr 1fr; gap: 1.4rem; }
-  .steps::before, .steps::after { display: none; }
+  .swap {
+    min-height: 9.5rem;
+  }
 
-  .case, .case:nth-child(even) { grid-template-columns: 1fr; }
-  .case:nth-child(even) .case__media { order: 0; }
+  .scene {
+    aspect-ratio: 4 / 3;
+  }
+
+  .steps {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
+  }
+
+  .steps::before,
+  .steps::after {
+    display: none;
+  }
+
+  .case,
+  .case:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+
+  .case:nth-child(even) .case__media {
+    order: 0;
+  }
 
   /* Craft: slider on top, short points below (only the titles, to save height) */
-  .craft__grid { grid-template-columns: 1fr; gap: 1.2rem; }
-  .points { grid-template-columns: repeat(3, 1fr); gap: .8rem; }
-  .points li { grid-template-columns: 1fr; text-align: center; justify-items: center; }
-  .points .icon-box { grid-row: auto; }
-  .points p { display: none; }
+  .craft__grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .points {
+    grid-template-columns: repeat(3, 1fr);
+    gap: .8rem;
+  }
+
+  /* Popup: one column. Slider on top, details below, the whole window scrolls */
+  .modal {
+    padding: .5rem;
+  }
+
+  .modal__dialog {
+    max-height: calc(100svh - 1rem);
+  }
+
+  .modal__body {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal__media {
+    padding: .7rem;
+    justify-content: flex-start;
+  }
+
+  .slider__slide .slot {
+    max-height: 60svh;
+  }
+
+  .modal__info {
+    overflow: visible;
+    padding: 1.2rem 1.2rem 1.6rem;
+  }
+
+  .modal__close {
+    top: .9rem;
+    right: .9rem;
+  }
+
+  .points li {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .points .icon-box {
+    grid-row: auto;
+  }
+
+  .points p {
+    display: none;
+  }
 
   /* ---- LIGHT ONLY ---- */
-  :root:not([data-theme="dark"]) .topbar__inner { box-shadow: 0 8px 20px -14px rgba(20, 30, 70, .4); }
+  :root:not([data-theme="dark"]) .topbar__inner {
+    box-shadow: 0 8px 20px -14px rgba(20, 30, 70, .4);
+  }
+
+  :root:not([data-theme="dark"]) .modal__dialog {
+    box-shadow: 0 24px 60px -24px rgba(15, 20, 40, .55);
+  }
 
   /* ---- DARK ONLY ---- */
-  [data-theme="dark"] .topbar__inner { background: color-mix(in srgb, var(--surface) 88%, transparent); }  /* a bit more solid on phones */
+  [data-theme="dark"] .topbar__inner {
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+  }
+
+  /* a bit more solid on phones */
 }
 
 
@@ -102,32 +247,116 @@
    D. PHONE  (up to 600px)
    ========================================================================== */
 @media (max-width: 600px) {
+
   /* ---- ALL THEMES ---- */
-  .logo { font-size: .8rem; }
-  .topbar__inner { gap: .5rem; padding-left: .9rem; }
-  .btn { padding: .65rem 1rem; }
-  .hero { padding-top: 5.2rem; }
-  .stage { width: min(100%, 20rem); }
-  .chip { font-size: .75rem; padding: .45rem .7rem; }
+  .logo {
+    font-size: .8rem;
+  }
 
-  .steps { grid-template-columns: 1fr; gap: 1.2rem; }
-  .step { display: grid; grid-template-columns: auto 1fr; gap: 0 1rem; align-items: start; }   /* icon on the left, text on the right */
-  .step .icon-box { order: 0; grid-column: 1; grid-row: 1 / span 3; margin: 0; }
-  .step::before, .step h3, .step p { grid-column: 2; order: 0; margin: 0; }
+  .topbar__inner {
+    gap: .5rem;
+    padding-left: .9rem;
+  }
 
-  .case__media .slot--small { width: 42%; }
-  .points { gap: .4rem; }
-  .points h3 { font-size: .85rem; }
-  .points .icon-box { width: 2.6rem; height: 2.6rem; }
+  .btn {
+    padding: .65rem 1rem;
+  }
 
-  .timeline { gap: 1.5rem; }
-  .footer { margin-top: 1.8rem; }
+  .hero {
+    padding-top: 5.2rem;
+  }
+
+  .stage {
+    width: min(100%, 20rem);
+  }
+
+  .chip {
+    font-size: .75rem;
+    padding: .45rem .7rem;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 1rem;
+    align-items: start;
+  }
+
+  /* icon on the left, text on the right */
+  .step .icon-box {
+    order: 0;
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    margin: 0;
+  }
+
+  .step::before,
+  .step h3,
+  .step p {
+    grid-column: 2;
+    order: 0;
+    margin: 0;
+  }
+
+  .peek {
+    width: 42%;
+  }
+
+  .peek__eye {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .facts {
+    grid-template-columns: 1fr;
+  }
+
+  .modal__info h3 {
+    font-size: 1.4rem;
+  }
+
+  .slider__btn {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .points {
+    gap: .4rem;
+  }
+
+  .points h3 {
+    font-size: .85rem;
+  }
+
+  .points .icon-box {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
+  .timeline {
+    gap: 1.5rem;
+  }
+
+  .footer {
+    margin-top: 1.8rem;
+  }
 
   /* ---- LIGHT ONLY ---- */
-  :root:not([data-theme="dark"]) .case, :root:not([data-theme="dark"]) .skill, :root:not([data-theme="dark"]) .role { box-shadow: none; }
+  :root:not([data-theme="dark"]) .case,
+  :root:not([data-theme="dark"]) .skill,
+  :root:not([data-theme="dark"]) .role {
+    box-shadow: none;
+  }
 
   /* ---- DARK ONLY ---- */
-  [data-theme="dark"] .chip { background: color-mix(in srgb, var(--surface-2) 92%, transparent); }
+  [data-theme="dark"] .chip {
+    background: color-mix(in srgb, var(--surface-2) 92%, transparent);
+  }
 }
 
 
@@ -135,11 +364,25 @@
    E. SMALL PHONE  (up to 380px, for example iPhone SE or older Androids)
    ========================================================================== */
 @media (max-width: 380px) {
+
   /* ---- ALL THEMES ---- */
-  h1 { font-size: 1.75rem; }
-  .btn-row .btn { flex: 1 1 auto; text-align: center; }
-  .stats b { font-size: 1.4rem; }
-  .points p, .points h3 { font-size: .78rem; }
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .btn-row .btn {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  .stats b {
+    font-size: 1.4rem;
+  }
+
+  .points p,
+  .points h3 {
+    font-size: .78rem;
+  }
 
   /* ---- LIGHT ONLY ---- */
   /* (nothing extra needed at this size) */
@@ -153,9 +396,15 @@
    F. SHORT SCREENS  (height 560px or less, such as phones held sideways)
    ========================================================================== */
 @media (max-height: 560px) {
+
   /* ---- ALL THEMES ---- */
-  .hero { padding: 5.2rem 0 1rem; }
-  .section { padding-block: 1.6rem; }
+  .hero {
+    padding: 5.2rem 0 1rem;
+  }
+
+  .section {
+    padding-block: 1.6rem;
+  }
 
   /* ---- LIGHT ONLY ---- */
   /* (nothing extra needed at this size) */
@@ -167,5 +416,7 @@
 /* G. SHORT LAPTOPS AND SHORT PHONES (height 760px or less):
       hide the intro line in the Craft section so the scene fits on one screen */
 @media (max-height: 760px) {
-  .craft .lead { display: none; }
+  .craft .lead {
+    display: none;
+  }
 }

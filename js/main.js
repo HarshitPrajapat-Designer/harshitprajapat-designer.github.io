@@ -8,7 +8,8 @@
      4. Fade-in when items scroll into view
      5. 3D tilt when the mouse moves over a card
      6. Scroll scenes  (Problem, Gallery, Craft)  + chapter rail + progress line
-     7. 3D background  (needs three.js, loaded in index.html)
+     7. Project popup  (Chapter 04: eye icon, image slider, details)
+     8. 3D background  (needs three.js, loaded in index.html)
 
    You normally do NOT need to edit this file to change text or images.
    ========================================================================== */
@@ -44,14 +45,14 @@
 
 
   /* ------------------------------------------------------------------------
-     3. IMAGE SLOTS
+     3. IMAGE SLOTS  (initSlots can also be run on new content, like the popup slides)
      Each <figure class="slot"> has an <img>. If the file is missing we try the
      other file types (.webp, .jpg, .png, .jpeg). If none exist, the slot gets
      the class "slot--empty" and the dashed "add image here" box appears.
      ------------------------------------------------------------------------ */
-  (function initSlots() {
+  function initSlots(scope) {
     var types = ["webp", "jpg", "png", "jpeg"];
-    $$(".slot").forEach(function (slot) {
+    $$(".slot", scope).forEach(function (slot) {
       var img = $("img", slot);
       if (!img) { slot.classList.add("slot--empty"); return; }
 
@@ -67,7 +68,8 @@
       img.addEventListener("error", tryNext);
       if (img.complete && img.naturalWidth === 0 && img.getAttribute("src")) { tryNext(); }   // already failed before this script ran
     });
-  })();
+  }
+  initSlots(document);
 
 
   /* ------------------------------------------------------------------------
@@ -216,7 +218,130 @@
 
 
   /* ------------------------------------------------------------------------
-     7. 3D BACKGROUND  (a soft wave of dots and lines behind the page)
+     7. PROJECT POPUP  (Chapter 04)
+     Click the small image (eye icon) or the "See all screens" button.
+     Content comes from <template id="project-NAME"> in index.html.
+     Close: X button, click outside, or Esc.  Slider: arrows, dots, keyboard, swipe.
+     ------------------------------------------------------------------------ */
+  (function initProjectPopup() {
+    var modal = $("#project-modal");
+    if (!modal) { return; }
+    var dialog   = $(".modal__dialog", modal);
+    var infoBox  = $("[data-js='modal-info']", modal);
+    var track    = $("[data-js='slider-track']", modal);
+    var dotsBox  = $("[data-js='slider-dots']", modal);
+    var counter  = $("[data-js='slider-count']", modal);
+    var slider   = $("[data-js='slider']", modal);
+    var prevBtn  = $("[data-js='slider-prev']", modal);
+    var nextBtn  = $("[data-js='slider-next']", modal);
+    var closeBtn = $(".modal__close", modal);
+    var current = 0, total = 0, opener = null, swipeStart = null, isOpen = false;
+
+    function showSlide(i) {
+      if (!total) { return; }
+      current = (i + total) % total;                                      // loops around at both ends
+      track.style.transform = "translateX(" + -current * 100 + "%)";
+      counter.textContent = "Screen " + (current + 1) + " of " + total;
+      $$("button", dotsBox).forEach(function (d, n) { d.classList.toggle("is-active", n === current); });
+    }
+
+    function openPopup(projectId, trigger) {
+      var tpl = document.getElementById("project-" + projectId);
+      if (!tpl) { return; }
+      var content = tpl.content.cloneNode(true);
+
+      // right side: details
+      infoBox.innerHTML = "";
+      infoBox.appendChild($("[data-part='info']", content));
+      infoBox.scrollTop = 0;
+
+      // left side: slides
+      track.innerHTML = "";
+      dotsBox.innerHTML = "";
+      var slides = Array.prototype.slice.call($("[data-part='slides']", content).children);
+      total = slides.length;
+      slides.forEach(function (fig, n) {
+        var wrap = document.createElement("div");
+        wrap.className = "slider__slide";
+        wrap.appendChild(fig);
+        var img = $("img", fig);
+        if (img) { img.loading = "eager"; }                              // load now, so slides never look blank
+        track.appendChild(wrap);
+
+        var dot = document.createElement("button");
+        dot.type = "button";
+        dot.setAttribute("aria-label", "Go to screen " + (n + 1));
+        dot.addEventListener("click", function () { showSlide(n); });
+        dotsBox.appendChild(dot);
+      });
+      initSlots(track);
+      slider.classList.toggle("is-single", total < 2);
+      track.style.transition = "none"; showSlide(0); void track.offsetWidth; track.style.transition = "";
+
+      // lock page scroll (keep the page from jumping when the scrollbar disappears)
+      root.style.setProperty("--sbw", Math.max(0, window.innerWidth - root.clientWidth) + "px");
+      root.classList.add("is-modal");
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      isOpen = true;
+      opener = trigger || document.activeElement;
+      closeBtn.focus({ preventScroll: true });
+    }
+
+    function closePopup() {
+      if (!isOpen) { return; }
+      isOpen = false;
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      root.classList.remove("is-modal");
+      root.style.removeProperty("--sbw");
+      if (opener && opener.focus) { opener.focus({ preventScroll: true }); }
+    }
+
+    // open: any element with data-project="name"
+    document.addEventListener("click", function (e) {
+      var trigger = e.target.closest ? e.target.closest("[data-project]") : null;
+      if (trigger) { e.preventDefault(); openPopup(trigger.getAttribute("data-project"), trigger); return; }
+      if (e.target.closest && e.target.closest("[data-js='modal-close']")) { closePopup(); }   // X button and the dark area outside
+    });
+
+    // the small image is a div with role="button", so Enter and Space must work like a click
+    document.addEventListener("keydown", function (e) {
+      if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("peek")) { e.preventDefault(); e.target.click(); }
+    });
+
+    prevBtn.addEventListener("click", function () { showSlide(current - 1); });
+    nextBtn.addEventListener("click", function () { showSlide(current + 1); });
+
+    // keyboard: Esc closes, arrows change slide, Tab stays inside the popup
+    document.addEventListener("keydown", function (e) {
+      if (!isOpen) { return; }
+      if (e.key === "Escape") { closePopup(); }
+      else if (e.key === "ArrowLeft") { showSlide(current - 1); }
+      else if (e.key === "ArrowRight") { showSlide(current + 1); }
+      else if (e.key === "Tab") {
+        var items = $$("button, a[href], [tabindex='0']", dialog).filter(function (el) { return el.offsetParent !== null && !el.disabled; });
+        if (!items.length) { return; }
+        var first = items[0], last = items[items.length - 1];
+        if (!dialog.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+        else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    // swipe on touch screens
+    slider.addEventListener("pointerdown", function (e) { swipeStart = e.clientX; });
+    slider.addEventListener("pointerup", function (e) {
+      if (swipeStart === null) { return; }
+      var dx = e.clientX - swipeStart; swipeStart = null;
+      if (Math.abs(dx) > 45) { showSlide(current + (dx < 0 ? 1 : -1)); }
+    });
+    slider.addEventListener("pointercancel", function () { swipeStart = null; });
+  })();
+
+
+  /* ------------------------------------------------------------------------
+     8. 3D BACKGROUND  (a soft wave of dots and lines behind the page)
      Uses three.js. If three.js cannot load, the page still works without it.
      ------------------------------------------------------------------------ */
   (function initBackground() {
