@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Harshit Prajapat | UI/UX Designer and UI Developer</title>
+  <meta name="description" content="I make complicated products easy to use. UI/UX designer and UI developer with 5+ years of experience in SaaS, mobile apps and learning platforms.">
+  <meta name="theme-color" content="#e8ebf1">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233347ff'/%3E%3Ctext x='32' y='44' font-size='34' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'%3EH%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: Unbounded (headings) and DM Sans (text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Styles: main.css = look (light + dark). responsive.css = phone, tablet and big-screen fixes. -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- If JavaScript is off, still show everything -->
+  <noscript><style>[data-reveal]{opacity:1;transform:none}.scene__old{display:none}.scene__new{opacity:1;position:relative;width:100%;left:0;top:0}</style></noscript>
+</head>
+
+<body>
+  <!--
+    PAGE MAP (top to bottom)
+      Top bar and chapter dots
+      1. HELLO      (id="hello")      intro, photo, 3D images
+         Numbers strip
+      2. PROBLEM    (id="problem")    messy screens become one clear screen (scroll scene)
+      3. PROCESS    (id="process")    4 steps
+      4. PROOF      (id="proof")      4 case studies
+         GALLERY    (id="gallery")    design work, slides sideways (scroll scene)
+      5. CRAFT      (id="craft")      Figma design vs live code (scroll scene)
+      6. SKILLS     (id="skills")     what I bring
+      7. ROLES      (id="roles")      3 roles in one person
+      8. PATH       (id="path")       work history
+      9. CONTACT    (id="contact")    email, LinkedIn, CV
+
+    IMAGES: every picture is a <figure class="slot">. The comment above it says
+    what the image is, what type it should be, and the file name to save it as.
+    Put the file in that folder and it shows up. No code change needed.
+    Full list: README.md
+  -->
+
+  <!-- Icons: defined once here, used everywhere with <use href="#i-name"> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></symbol>
+    <symbol id="i-cms" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 14h8"/></symbol>
+    <symbol id="i-team" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14c3 0 6 1.5 6 5"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></symbol>
+    <symbol id="i-arrows" viewBox="0 0 24 24"><path d="M9 6l-5 6 5 6M15 6l5 6-5 6"/></symbol>
+    <symbol id="i-pixel" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></symbol>
+    <symbol id="i-screens" viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="10" rx="2"/><rect x="14" y="9" width="8" height="12" rx="2"/></symbol>
+    <symbol id="i-read" viewBox="0 0 24 24"><path d="M4 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H4zM20 5h-4a3 3 0 0 0-2 .8M20 5v13h-4"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="progress"></div>                                   <!-- thin scroll line at the very top -->
+  <canvas id="bg3d" aria-hidden="true"></canvas>              <!-- 3D wave background (js/main.js) -->
+
+  <!-- ===================== TOP BAR ===================== -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="logo" href="#hello">Harshit Prajapat</a>
+      <nav class="topbar__nav" aria-label="Main">
+        <a href="#proof">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#path">Path</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="icon-btn" type="button" data-js="theme-button" aria-label="Switch between light and dark mode">
+        <span class="icon-moon"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#i-moon"/></svg></span><span class="icon-sun"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#i-sun"/></svg></span>
+      </button>
+      <a class="btn" href="#contact">Let's talk</a>
+    </div>
+  </header>
+
+  <!-- ===================== CHAPTER DOTS (right side, desktop only) ===================== -->
+  <nav class="rail" aria-label="Page chapters">
+    <a class="rail__dot" href="#hello"   aria-label="Hello" data-label="Hello"></a>
+    <a class="rail__dot" href="#problem" aria-label="Problem" data-label="Problem"></a>
+    <a class="rail__dot" href="#process" aria-label="Process" data-label="Process"></a>
+    <a class="rail__dot" href="#proof"   aria-label="Proof" data-label="Proof"></a>
+    <a class="rail__dot" href="#craft"   aria-label="Craft" data-label="Craft"></a>
+    <a class="rail__dot" href="#skills"  aria-label="Skills" data-label="Skills"></a>
+    <a class="rail__dot" href="#roles"   aria-label="Roles" data-label="Roles"></a>
+    <a class="rail__dot" href="#path"    aria-label="Path" data-label="Path"></a>
+    <a class="rail__dot" href="#contact" aria-label="Contact" data-label="Contact"></a>
+  </nav>
+
+  <main id="main">
+
+    <!-- ===================== 1. HELLO ===================== -->
+    <section id="hello" class="hero">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <div class="chapter">Chapter 01, Hello</div>
+          <h1>I make complicated products easy to use.</h1>
+          <p class="hero__sub">Hi, I'm Harshit. I'm a UI/UX designer who also writes code. For 5+ years I've worked on SaaS tools, mobile apps and learning platforms.</p>
+          <div class="btn-row">
+            <a class="btn btn--solid" href="#proof">See my work</a>
+            <a class="btn" href="assets/cv/Harshit_Prajapat_CV.pdf" download="Harshit_Prajapat_CV.pdf">Download my CV</a>
+          </div>
+          <div class="hero__status"><i></i>Open to new roles</div>
+        </div>
+
+        <!-- 3D stack of images. It tilts with the mouse (js/main.js). -->
+        <div class="stage" aria-hidden="true">
+          <div class="rig" data-js="hero-rig">
+            <div class="layer layer--portrait frame">
+              <!-- IMAGE: Your portrait photo (face and shoulders, simple background) | TYPE: Photo, PNG or JPG, 735 × 967 px or bigger | FILE: assets/img/hero/harshit-portrait.webp (or .jpg / .png) -->
+              <figure class="slot slot--fill">
+                <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Your portrait photo (face and shoulders, simple background)</span><span>Type: Photo, PNG or JPG, 735 × 967 px or bigger</span><code>Save as: assets/img/hero/harshit-portrait.webp (or .jpg / .png)</code></div>
+                <img src="assets/img/hero/harshit-portrait.webp" data-base="assets/img/hero/harshit-portrait" alt="Harshit Prajapat" loading="eager" decoding="async">
+              </figure>
+            </div>
+            <div class="layer layer--card-a">
+              <figure class="slot slot--mini" style="--ratio:13 / 10">
+                <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Same as Case 01, main screen (reused here)</span><span>Type: PNG or JPG, 1600 × 1230 px</span><code>Save as: assets/img/portfolio/mobile/monity-1.webp (or .jpg / .png)</code></div>
+                <img src="assets/img/portfolio/mobile/monity-1.webp" data-base="assets/img/portfolio/mobile/monity-1" alt="Monity app" loading="eager" decoding="async">
+              </figure>
+            </div>
+            <div class="layer layer--card-b">
+              <figure class="slot slot--mini" style="--ratio:13 / 10">
+                <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Same as Case 02, main screen (reused here)</span><span>Type: PNG or JPG, 1600 × 1230 px</span><code>Save as: assets/img/portfolio/mobile/traders-hub-1.webp (or .jpg / .png)</code></div>
+                <img src="assets/img/portfolio/mobile/traders-hub-1.webp" data-base="assets/img/portfolio/mobile/traders-hub-1" alt="Traders Hub app" loading="eager" decoding="async">
+              </figure>
+            </div>
+            <div class="layer chip chip--1"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#i-layers"/></svg><span>Design</span></div>
+            <div class="layer chip chip--2"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#i-code"/></svg><span>Code</span></div>
+            <div class="layer chip chip--3"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#i-play"/></svg><span>Motion</span></div>
+            <div class="layer chip chip--4"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#i-chat"/></svg><span>Research</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== NUMBERS STRIP ===================== -->
+    <div class="stats">
+      <div class="wrap stats__grid">
+        <div><b>5+</b><span>years of hands-on work</span></div>
+        <div><b>40,000+</b><span>students use the learning screens I built at TCS</span></div>
+        <div><b>4</b><span>companies, from small teams to TCS</span></div>
+        <div><b>2 in 1</b><span>I design in Figma and build it in code</span></div>
+      </div>
+    </div>
+
+    <!-- ===================== 2. PROBLEM (scroll scene) =====================
+         Messy screens fly together into one clear screen while you scroll. -->
+    <section id="problem" class="scrub" data-scene="problem" style="--run: 110vh">
+      <div class="pin">
+        <div class="wrap two-col">
+          <div>
+            <div class="chapter">Chapter 02, The problem</div>
+            <div class="swap" data-js="swap">
+              <div class="swap__before">
+                <h2>Most products start out messy.</h2>
+                <p>Too many buttons. Too many steps. People get lost, and then they leave.</p>
+              </div>
+              <div class="swap__after">
+                <h2>Then I clear it up.</h2>
+                <p>One goal on every screen. Simple words. A short path. People finish what they came to do.</p>
+              </div>
+            </div>
+          </div>
+          <div class="scene">
+
+            <div class="scene__old" data-js="scene-old">
+              <!-- IMAGE: An old or messy screen. For example, one of your apps before the redesign, or any crowded screen you fixed | TYPE: Screenshot, 1200 × 750 px (16:10) | FILE: assets/img/story/before-1.webp (or .jpg / .png) -->
+              <figure class="slot" style="--ratio:16 / 10">
+                <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>An old or messy screen. For example, one of your apps before the redesign, or any crowded screen you fixed</span><span>Type: Screenshot, 1200 × 750 px (16:10)</span><code>Save as: assets/img/story/before-1.webp (or .jpg / .png)</code></div>
+                <img src="assets/img/story/before-1.webp" data-base="assets/img/story/before-1" alt="Old screen 1" loading="lazy" decoding="async">
+              </figure>
+            </div>
+
+            <div class="scene__old" data-js="scene-old">
+              <!-- IMAGE: An old or messy screen. For example, one of your apps before the redesign, or any crowded screen you fixed | TYPE: Screenshot, 1200 × 750 px (16:10) | FILE: assets/img/story/before-2.webp (or .jpg / .png) -->
+              <figure class="slot" style="--ratio:16 / 10">
+                <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>An old or messy screen. For example, one of your apps before the redesign, or any crowded screen you fixed</span><span>Type: Screenshot, 1200 × 750 px (16:10)</span><code>Save as: assets/img/story/before-2.webp (or .jpg / .png)</code></div>
+                <img src="assets/img/story/before-2.webp" data-base="assets/img/story/before-2" alt="Old screen 2" loading="lazy" decoding="async">
+              </figure>
+            </div>
+
+            <div class="scene__old" data-js="scene-old">
+              <!-- IMAGE: An old or messy screen. For example, one of your apps before the redesign, or any crowded screen you fixed | TYPE: Screenshot, 1200 × 750 px (16:10) | FILE: assets/img/story/before-3.webp (or .jpg / .png) -->
+              <figure class="slot" style="--ratio:16 / 10">
+                <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>An old or messy screen. For example, one of your apps before the redesign, or any crowded screen you fixed</span><span>Type: Screenshot, 1200 × 750 px (16:10)</span><code>Save as: assets/img/story/before-3.webp (or .jpg / .png)</code></div>
+                <img src="assets/img/story/before-3.webp" data-base="assets/img/story/before-3" alt="Old screen 3" loading="lazy" decoding="async">
+              </figure>
+            </div>
+            <div class="scene__new" data-js="scene-new">
+              <!-- IMAGE: The CLEAR version: your best finished screen (it can be the same as Case 01) | TYPE: PNG or JPG, 1600 × 1230 px (13:10) | FILE: assets/img/portfolio/mobile/monity-1.webp (or .jpg / .png) -->
+              <figure class="slot" style="--ratio:13 / 10">
+                <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>The CLEAR version: your best finished screen (it can be the same as Case 01)</span><span>Type: PNG or JPG, 1600 × 1230 px (13:10)</span><code>Save as: assets/img/portfolio/mobile/monity-1.webp (or .jpg / .png)</code></div>
+                <img src="assets/img/portfolio/mobile/monity-1.webp" data-base="assets/img/portfolio/mobile/monity-1" alt="A clear, finished app screen" loading="lazy" decoding="async">
+              </figure>
+              <p class="scene__caption">Monity, a personal finance app</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 3. PROCESS ===================== -->
+    <section id="process" class="section">
+      <div class="wrap">
+        <div class="chapter">Chapter 03, The process</div>
+        <h2>How I work</h2>
+        <p class="lead">Four simple steps. Your team always knows what is happening.</p>
+        <ol class="steps" data-draw>
+          <li class="step" data-reveal>
+            <div class="icon-box"><svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-chat"/></svg></div>
+            <h3>Listen</h3>
+            <p>I talk to users and to your team. I want to know the real problem before I draw anything.</p>
+          </li>
+          <li class="step" data-reveal>
+            <div class="icon-box"><svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-pen"/></svg></div>
+            <h3>Sketch</h3>
+            <p>I sketch the flow and make quick wireframes. Mistakes are cheap to fix at this stage.</p>
+          </li>
+          <li class="step" data-reveal>
+            <div class="icon-box"><svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-layers"/></svg></div>
+            <h3>Design</h3>
+            <p>I design clean screens in Figma and build a design system your team can reuse.</p>
+          </li>
+          <li class="step" data-reveal>
+            <div class="icon-box"><svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-code"/></svg></div>
+            <h3>Build</h3>
+            <p>I hand over clean code, or I code it myself. What you approve is what goes live.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== 4. PROOF ===================== -->
+    <section id="proof" class="section">
+      <div class="wrap">
+        <div class="chapter">Chapter 04, The proof</div>
+        <h2>Work I'm proud of</h2>
+        <p class="lead">Every project began with a real problem. Here is what was wrong, what I did, and what changed.</p>
+        <div class="cases">
+        <!-- CASE 01: Monity -->
+        <article class="case" data-reveal>
+          <div class="case__media frame" data-tilt="12">
+            <!-- IMAGE: Main screen of the Monity project (app mockup or screenshot) | TYPE: PNG or JPG, 1600 × 1230 px (13:10) | FILE: assets/img/portfolio/mobile/monity-1.webp (or .jpg / .png) -->
+            <figure class="slot" style="--ratio:13 / 10">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Main screen of the Monity project (app mockup or screenshot)</span><span>Type: PNG or JPG, 1600 × 1230 px (13:10)</span><code>Save as: assets/img/portfolio/mobile/monity-1.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/mobile/monity-1.webp" data-base="assets/img/portfolio/mobile/monity-1" alt="Monity app screens" loading="lazy" decoding="async">
+            </figure>
+            <figure class="slot slot--mini slot--small" style="--ratio:13 / 10">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Second screen of the Monity project, shown as a small card on top</span><span>Type: PNG or JPG, 1600 × 1230 px (13:10)</span><code>Save as: assets/img/portfolio/mobile/monity-2.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/mobile/monity-2.webp" data-base="assets/img/portfolio/mobile/monity-2" alt="Monity app, second screen" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="case__body">
+            <div class="case__tag">Case 01, Mobile app, personal finance</div>
+            <h3>Monity</h3>
+            <dl>
+              <dt>The problem</dt><dd>Most people quit budgeting apps within two weeks. Typing in every receipt gets boring fast.</dd>
+              <dt>What I did</dt><dd>I added receipt scanning, put the debt goal right on the home screen, and built in an AI helper that gives simple tips.</dd>
+              <dt>The result</dt><dd>A friendly app that makes saving money feel doable.</dd>
+            </dl>
+          </div>
+        </article>
+
+        <!-- CASE 02: Traders Hub -->
+        <article class="case" data-reveal>
+          <div class="case__media frame" data-tilt="12">
+            <!-- IMAGE: Main screen of the Traders Hub project (app mockup or screenshot) | TYPE: PNG or JPG, 1600 × 1230 px (13:10) | FILE: assets/img/portfolio/mobile/traders-hub-1.webp (or .jpg / .png) -->
+            <figure class="slot" style="--ratio:13 / 10">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Main screen of the Traders Hub project (app mockup or screenshot)</span><span>Type: PNG or JPG, 1600 × 1230 px (13:10)</span><code>Save as: assets/img/portfolio/mobile/traders-hub-1.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/mobile/traders-hub-1.webp" data-base="assets/img/portfolio/mobile/traders-hub-1" alt="Traders Hub app screens" loading="lazy" decoding="async">
+            </figure>
+            <figure class="slot slot--mini slot--small" style="--ratio:13 / 10">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Second screen of the Traders Hub project, shown as a small card on top</span><span>Type: PNG or JPG, 1600 × 1230 px (13:10)</span><code>Save as: assets/img/portfolio/mobile/traders-hub-2.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/mobile/traders-hub-2.webp" data-base="assets/img/portfolio/mobile/traders-hub-2" alt="Traders Hub app, second screen" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="case__body">
+            <div class="case__tag">Case 02, Mobile app, trading</div>
+            <h3>Traders Hub</h3>
+            <dl>
+              <dt>The problem</dt><dd>Traders were jumping between many apps, and that led to slow, stressed decisions.</dd>
+              <dt>What I did</dt><dd>I put the live market, a calendar, daily levels and coach chat on one dashboard, in a dark theme that is easy on the eyes.</dd>
+              <dt>The result</dt><dd>One place for the whole trading day.</dd>
+            </dl>
+          </div>
+        </article>
+
+        <!-- CASE 03: Solar 4 Good -->
+        <article class="case" data-reveal>
+          <div class="case__media frame" data-tilt="12">
+            <!-- IMAGE: Main screen of the Solar 4 Good project (app mockup or screenshot) | TYPE: PNG or JPG, 1600 × 1230 px (13:10) | FILE: assets/img/portfolio/mobile/solar-4-good-1.webp (or .jpg / .png) -->
+            <figure class="slot" style="--ratio:13 / 10">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Main screen of the Solar 4 Good project (app mockup or screenshot)</span><span>Type: PNG or JPG, 1600 × 1230 px (13:10)</span><code>Save as: assets/img/portfolio/mobile/solar-4-good-1.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/mobile/solar-4-good-1.webp" data-base="assets/img/portfolio/mobile/solar-4-good-1" alt="Solar 4 Good app screens" loading="lazy" decoding="async">
+            </figure>
+            <figure class="slot slot--mini slot--small" style="--ratio:13 / 10">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Second screen of the Solar 4 Good project, shown as a small card on top</span><span>Type: PNG or JPG, 1600 × 1230 px (13:10)</span><code>Save as: assets/img/portfolio/mobile/solar-4-good-2.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/mobile/solar-4-good-2.webp" data-base="assets/img/portfolio/mobile/solar-4-good-2" alt="Solar 4 Good app, second screen" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="case__body">
+            <div class="case__tag">Case 03, Mobile app, solar energy</div>
+            <h3>Solar 4 Good</h3>
+            <dl>
+              <dt>The problem</dt><dd>Customers, sales reps, survey teams and admins all worked in separate chats and spreadsheets.</dd>
+              <dt>What I did</dt><dd>I designed four role-based flows inside one app. Customers see simple energy cards. Field teams see a clear task list.</dd>
+              <dt>The result</dt><dd>Fewer support calls and faster handoffs between teams.</dd>
+            </dl>
+          </div>
+        </article>
+
+        <!-- CASE 04: Young Rocket -->
+        <article class="case" data-reveal>
+          <div class="case__media frame" data-tilt="12">
+            <!-- IMAGE: Main screen of the Young Rocket project (app mockup or screenshot) | TYPE: PNG or JPG, 1600 × 1230 px (13:10) | FILE: assets/img/portfolio/web/young-rocket-1.webp (or .jpg / .png) -->
+            <figure class="slot" style="--ratio:13 / 10">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Main screen of the Young Rocket project (app mockup or screenshot)</span><span>Type: PNG or JPG, 1600 × 1230 px (13:10)</span><code>Save as: assets/img/portfolio/web/young-rocket-1.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/web/young-rocket-1.webp" data-base="assets/img/portfolio/web/young-rocket-1" alt="Young Rocket course page" loading="lazy" decoding="async">
+            </figure>
+            <figure class="slot slot--mini slot--small" style="--ratio:13 / 10">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Second screen of the Young Rocket project, shown as a small card on top</span><span>Type: PNG or JPG, 1600 × 1230 px (13:10)</span><code>Save as: assets/img/portfolio/web/young-rocket-2.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/web/young-rocket-2.webp" data-base="assets/img/portfolio/web/young-rocket-2" alt="Young Rocket, second page" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="case__body">
+            <div class="case__tag">Case 04, Web platform, online learning</div>
+            <h3>Young Rocket</h3>
+            <dl>
+              <dt>The problem</dt><dd>Video course sites feel crowded, and free and paid lessons look the same.</dd>
+              <dt>What I did</dt><dd>I designed a clean video page with clear Free and Premium tags, and I coded it myself in HTML, CSS and JavaScript.</dd>
+              <dt>The result</dt><dd>Students can focus on the lesson, and the finished page matches the design.</dd>
+            </dl>
+          </div>
+        </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GALLERY (scroll scene) =====================
+         The row of images slides sideways while you scroll down. -->
+    <section id="gallery" class="scrub gallery" data-scene="gallery" style="--run: 150vh">
+      <div class="pin">
+        <div class="wrap">
+          <h2>More design work</h2>
+          <p class="lead" style="margin-bottom:0">Posters, brand work, logos and web pages. Keep scrolling and the row slides sideways.</p>
+        </div>
+        <div class="track" data-js="gallery-track">
+            <!-- IMAGE: One piece of your design work (Auraa Lifestyle social media design) | TYPE: PNG or JPG, 1600 px wide | FILE: assets/img/portfolio/graphic/auraa-1.webp (or .jpg / .png) -->
+            <figure class="slot slot--mini" style="--ratio:13 / 10">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>One piece of your design work (Auraa Lifestyle social media design)</span><span>Type: PNG or JPG, 1600 px wide</span><code>Save as: assets/img/portfolio/graphic/auraa-1.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/graphic/auraa-1.webp" data-base="assets/img/portfolio/graphic/auraa-1" alt="Auraa Lifestyle social media design" loading="lazy" decoding="async">
+            </figure>
+            <!-- IMAGE: One piece of your design work (Microlent Systems brand post) | TYPE: PNG or JPG, 1600 px wide | FILE: assets/img/portfolio/graphic/microlent-1.webp (or .jpg / .png) -->
+            <figure class="slot slot--mini" style="--ratio:13 / 10">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>One piece of your design work (Microlent Systems brand post)</span><span>Type: PNG or JPG, 1600 px wide</span><code>Save as: assets/img/portfolio/graphic/microlent-1.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/graphic/microlent-1.webp" data-base="assets/img/portfolio/graphic/microlent-1" alt="Microlent Systems brand post" loading="lazy" decoding="async">
+            </figure>
+            <!-- IMAGE: One piece of your design work (Logo design collection) | TYPE: PNG or JPG, 1600 px wide | FILE: assets/img/portfolio/graphic/logos-1.webp (or .jpg / .png) -->
+            <figure class="slot slot--mini" style="--ratio:1 / 1">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>One piece of your design work (Logo design collection)</span><span>Type: PNG or JPG, 1600 px wide</span><code>Save as: assets/img/portfolio/graphic/logos-1.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/graphic/logos-1.webp" data-base="assets/img/portfolio/graphic/logos-1" alt="Logo design collection" loading="lazy" decoding="async">
+            </figure>
+            <!-- IMAGE: One piece of your design work (Young Rocket landing page) | TYPE: PNG or JPG, 1600 px wide | FILE: assets/img/portfolio/web/young-rocket-3.webp (or .jpg / .png) -->
+            <figure class="slot slot--mini" style="--ratio:13 / 10">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>One piece of your design work (Young Rocket landing page)</span><span>Type: PNG or JPG, 1600 px wide</span><code>Save as: assets/img/portfolio/web/young-rocket-3.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/web/young-rocket-3.webp" data-base="assets/img/portfolio/web/young-rocket-3" alt="Young Rocket landing page" loading="lazy" decoding="async">
+            </figure>
+            <!-- IMAGE: One piece of your design work (Auraa Lifestyle event posts) | TYPE: PNG or JPG, 1600 px wide | FILE: assets/img/portfolio/graphic/auraa-2.webp (or .jpg / .png) -->
+            <figure class="slot slot--mini" style="--ratio:13 / 10">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>One piece of your design work (Auraa Lifestyle event posts)</span><span>Type: PNG or JPG, 1600 px wide</span><code>Save as: assets/img/portfolio/graphic/auraa-2.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/graphic/auraa-2.webp" data-base="assets/img/portfolio/graphic/auraa-2" alt="Auraa Lifestyle event posts" loading="lazy" decoding="async">
+            </figure>
+            <!-- IMAGE: One piece of your design work (Microlent Systems team post) | TYPE: PNG or JPG, 1600 px wide | FILE: assets/img/portfolio/graphic/microlent-2.webp (or .jpg / .png) -->
+            <figure class="slot slot--mini" style="--ratio:13 / 10">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>One piece of your design work (Microlent Systems team post)</span><span>Type: PNG or JPG, 1600 px wide</span><code>Save as: assets/img/portfolio/graphic/microlent-2.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/graphic/microlent-2.webp" data-base="assets/img/portfolio/graphic/microlent-2" alt="Microlent Systems team post" loading="lazy" decoding="async">
+            </figure>
+            <!-- IMAGE: One piece of your design work (Brand logo set) | TYPE: PNG or JPG, 1600 px wide | FILE: assets/img/portfolio/graphic/logos-2.webp (or .jpg / .png) -->
+            <figure class="slot slot--mini" style="--ratio:1 / 1">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>One piece of your design work (Brand logo set)</span><span>Type: PNG or JPG, 1600 px wide</span><code>Save as: assets/img/portfolio/graphic/logos-2.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/graphic/logos-2.webp" data-base="assets/img/portfolio/graphic/logos-2" alt="Brand logo set" loading="lazy" decoding="async">
+            </figure>
+            <!-- IMAGE: One piece of your design work (Corporate tent card design) | TYPE: PNG or JPG, 1600 px wide | FILE: assets/img/portfolio/graphic/tent-card.webp (or .jpg / .png) -->
+            <figure class="slot slot--mini" style="--ratio:1600 / 1457">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>One piece of your design work (Corporate tent card design)</span><span>Type: PNG or JPG, 1600 px wide</span><code>Save as: assets/img/portfolio/graphic/tent-card.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/portfolio/graphic/tent-card.webp" data-base="assets/img/portfolio/graphic/tent-card" alt="Corporate tent card design" loading="lazy" decoding="async">
+            </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 5. CRAFT (scroll scene) =====================
+         Left: slider that shows the Figma design, then the live code, as you scroll.
+         Right: three short reasons why this matters to a team. -->
+    <section id="craft" class="scrub craft" data-scene="craft" style="--run: 90vh">
+      <div class="pin">
+        <div class="wrap">
+          <div class="chapter">Chapter 05, The craft</div>
+          <h2>I design it. Then I build it.</h2>
+          <p class="lead">What you see in Figma is what ends up in the browser. Nothing gets lost in the handoff, and your team saves time.</p>
+          <div class="craft__grid">
+            <div class="compare frame">
+              <!-- Bottom layer: the live page (visible on the right) -->
+              <div class="compare__layer">
+                <!-- IMAGE: Screenshot of the SAME page running in the browser from your code | TYPE: PNG or JPG, 1600 × 1000 px (16:10) | FILE: assets/img/craft/live-code.webp (or .jpg / .png) -->
+                <figure class="slot slot--fill">
+                  <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Screenshot of the SAME page running in the browser from your code</span><span>Type: PNG or JPG, 1600 × 1000 px (16:10)</span><code>Save as: assets/img/craft/live-code.webp (or .jpg / .png)</code></div>
+                  <img src="assets/img/craft/live-code.webp" data-base="assets/img/craft/live-code" alt="The same page running in the browser" loading="lazy" decoding="async">
+                </figure>
+                <span class="compare__label compare__label--right">Built in code</span>
+              </div>
+              <!-- Top layer: the Figma design (revealed from the left while you scroll) -->
+              <div class="compare__layer compare__layer--top" data-js="compare-top">
+                <!-- IMAGE: Screenshot of ONE page in Figma, for example the Young Rocket video page | TYPE: PNG or JPG, 1600 × 1000 px (16:10) | FILE: assets/img/craft/figma-design.webp (or .jpg / .png) -->
+                <figure class="slot slot--fill">
+                  <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Screenshot of ONE page in Figma, for example the Young Rocket video page</span><span>Type: PNG or JPG, 1600 × 1000 px (16:10)</span><code>Save as: assets/img/craft/figma-design.webp (or .jpg / .png)</code></div>
+                  <img src="assets/img/craft/figma-design.webp" data-base="assets/img/craft/figma-design" alt="Figma design of a page" loading="lazy" decoding="async">
+                </figure>
+                <span class="compare__label compare__label--left">Designed in Figma</span>
+              </div>
+              <div class="compare__handle" data-js="compare-handle"><i><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#i-arrows"/></svg></i></div>
+            </div>
+            <ul class="points">
+              <li><div class="icon-box"><svg class="icon" width="22" height="22" aria-hidden="true"><use href="#i-pixel"/></svg></div><h3>It looks like the design</h3><p>Colors, fonts and spacing match the Figma file.</p></li>
+              <li><div class="icon-box"><svg class="icon" width="22" height="22" aria-hidden="true"><use href="#i-screens"/></svg></div><h3>It fits every screen</h3><p>Phone, tablet, laptop and big monitors all get a layout that fits.</p></li>
+              <li><div class="icon-box"><svg class="icon" width="22" height="22" aria-hidden="true"><use href="#i-read"/></svg></div><h3>Code your team can read</h3><p>Clean HTML, CSS and JavaScript with clear names and comments.</p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 6. SKILLS ===================== -->
+    <section id="skills" class="section">
+      <div class="wrap">
+        <div class="chapter">Chapter 06, The toolkit</div>
+        <h2>What I bring</h2>
+        <p class="lead">Design and code, from the same person.</p>
+        <div class="skills__grid">
+          <div class="skill" data-reveal data-tilt="6">
+            <div class="icon-box"><svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-layers"/></svg></div>
+            <h3>Product design</h3>
+            <p>Research, user flows, wireframes, prototypes, design systems and dashboards.</p>
+          </div>
+          <div class="skill" data-reveal data-tilt="6">
+            <div class="icon-box"><svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-phone"/></svg></div>
+            <h3>Mobile and web</h3>
+            <p>Easy to use with a thumb on a phone, and clear on tablets, laptops and big screens.</p>
+          </div>
+          <div class="skill" data-reveal data-tilt="6">
+            <div class="icon-box"><svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-code"/></svg></div>
+            <h3>Front-end code</h3>
+            <p>HTML, CSS, Tailwind, JavaScript, React, Vue and Angular.</p>
+          </div>
+          <div class="skill" data-reveal data-tilt="6">
+            <div class="icon-box"><svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-cms"/></svg></div>
+            <h3>WordPress and CMS</h3>
+            <p>Custom themes that load fast and are easy for your team to update.</p>
+          </div>
+          <div class="skill" data-reveal data-tilt="6">
+            <div class="icon-box"><svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-play"/></svg></div>
+            <h3>Motion and visuals</h3>
+            <p>Icons, logos, videos and animations made with After Effects and Premiere Pro.</p>
+          </div>
+          <div class="skill" data-reveal data-tilt="6">
+            <div class="icon-box"><svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-team"/></svg></div>
+            <h3>Teamwork</h3>
+            <p>I run workshops, explain my choices in plain words, and welcome feedback.</p>
+          </div>
+        </div>
+        <div class="chips" data-reveal><span>Figma</span><span>FigJam</span><span>Adobe XD</span><span>Illustrator</span><span>Photoshop</span><span>After Effects</span><span>Premiere Pro</span><span>Miro</span><span>Canva</span><span>InDesign</span><span>Tailwind CSS</span><span>Bootstrap</span><span>React</span><span>WordPress</span><span>Articulate 360</span></div>
+      </div>
+    </section>
+
+    <!-- ===================== 7. ROLES ===================== -->
+    <section id="roles" class="section">
+      <div class="wrap">
+        <div class="chapter">Chapter 07, The roles</div>
+        <h2>Three roles, one person</h2>
+        <p class="lead">Hire one person and get all three skill sets.</p>
+        <div class="roles__grid">
+          <article class="role" data-reveal data-tilt="6">
+            <!-- IMAGE: Your photo, or a screenshot of a Figma board with your UI/UX work | TYPE: Photo or screenshot, 1200 × 900 px (4:3) | FILE: assets/img/roles/ui-ux-designer.webp (or .jpg / .png) -->
+            <figure class="slot" style="--ratio:4 / 3">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>Your photo, or a screenshot of a Figma board with your UI/UX work</span><span>Type: Photo or screenshot, 1200 × 900 px (4:3)</span><code>Save as: assets/img/roles/ui-ux-designer.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/roles/ui-ux-designer.webp" data-base="assets/img/roles/ui-ux-designer" alt="UI/UX Designer" loading="lazy" decoding="async">
+            </figure>
+            <div class="role__body">
+              <div class="icon-box"><svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-pen"/></svg></div>
+              <h3>UI/UX Designer</h3>
+              <p>Research, user flows, wireframes, prototypes and design systems.</p>
+            </div>
+          </article>
+          <article class="role" data-reveal data-tilt="6">
+            <!-- IMAGE: A screenshot of your code editor, or of a live site you built | TYPE: Screenshot, 1200 × 900 px (4:3) | FILE: assets/img/roles/ui-developer.webp (or .jpg / .png) -->
+            <figure class="slot" style="--ratio:4 / 3">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>A screenshot of your code editor, or of a live site you built</span><span>Type: Screenshot, 1200 × 900 px (4:3)</span><code>Save as: assets/img/roles/ui-developer.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/roles/ui-developer.webp" data-base="assets/img/roles/ui-developer" alt="UI Developer" loading="lazy" decoding="async">
+            </figure>
+            <div class="role__body">
+              <div class="icon-box"><svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-code"/></svg></div>
+              <h3>UI Developer</h3>
+              <p>HTML, CSS, JavaScript, React, Tailwind and WordPress themes.</p>
+            </div>
+          </article>
+          <article class="role" data-reveal data-tilt="6">
+            <!-- IMAGE: A frame from your After Effects or Premiere Pro project | TYPE: Screenshot or still frame, 1200 × 900 px (4:3) | FILE: assets/img/roles/multimedia-designer.webp (or .jpg / .png) -->
+            <figure class="slot" style="--ratio:4 / 3">
+              <div class="ph" aria-hidden="true"><svg class="icon" width="30" height="30" aria-hidden="true"><use href="#i-image"/></svg><b>Add your image here</b><span>A frame from your After Effects or Premiere Pro project</span><span>Type: Screenshot or still frame, 1200 × 900 px (4:3)</span><code>Save as: assets/img/roles/multimedia-designer.webp (or .jpg / .png)</code></div>
+              <img src="assets/img/roles/multimedia-designer.webp" data-base="assets/img/roles/multimedia-designer" alt="Multimedia Designer" loading="lazy" decoding="async">
+            </figure>
+            <div class="role__body">
+              <div class="icon-box"><svg class="icon" width="26" height="26" aria-hidden="true"><use href="#i-play"/></svg></div>
+              <h3>Multimedia Designer</h3>
+              <p>Videos, intro slides, motion graphics and social media creatives.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 8. PATH ===================== -->
+    <section id="path" class="section">
+      <div class="wrap">
+        <div class="chapter">Chapter 08, The path</div>
+        <h2>My story so far</h2>
+        <p class="lead">I studied BCA (2018 to 2021) and I've been building real products since 2020.</p>
+        <ol class="timeline" data-draw>
+          <li data-reveal>
+            <small>Oct 2024 to now</small>
+            <h3>UI/UX Designer, UI Developer, Multimedia Designer</h3>
+            <p class="company">Tata Consultancy Services (TCS)</p>
+            <p>I run research and design-thinking workshops for the Placement Success Program and turn what we learn into course content and screens. The learning materials I built are used by 40,000+ students. I also make videos, intro slides and animations.</p>
+          </li>
+          <li data-reveal>
+            <small>Jan 2022 to Sep 2024</small>
+            <h3>UI/UX Designer, UI Developer, WordPress Developer</h3>
+            <p class="company">Microlent Systems</p>
+            <p>I owned the UI/UX design for web, mobile and software products, from first wireframes to high-fidelity prototypes in Figma and Adobe XD. I also built responsive front ends with React, Vue and Angular, connected to Laravel, for dashboards and admin panels, and made custom WordPress themes.</p>
+          </li>
+          <li data-reveal>
+            <small>Jan 2021 to Dec 2021</small>
+            <h3>UI/UX Designer, UI Developer, WordPress Developer</h3>
+            <p class="company">The Bulls Media</p>
+            <p>I designed websites, social media graphics and logos. I built WordPress sites with custom themes, and worked with HTML, CSS, Bootstrap, JavaScript and core PHP.</p>
+          </li>
+          <li data-reveal>
+            <small>Jun 2020 to Dec 2020</small>
+            <h3>Web Designer, Web Developer</h3>
+            <p class="company">E-Cybertech Solution</p>
+            <p>My first job. I designed responsive layouts with HTML5, CSS3 and Bootstrap, and built sites with PHP, forms, dynamic content and database connections.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== 9. CONTACT ===================== -->
+    <section id="contact" class="section contact">
+      <div class="wrap">
+        <div class="chapter">Chapter 09, Your turn</div>
+        <h2>Let's work together.</h2>
+        <p class="lead">Do you have a role, a product or a problem in mind? I'd love to hear about it.</p>
+        <div class="btn-row">
+          <a class="btn btn--solid" href="mailto:harshitp849@gmail.com">Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/harshitprajapat/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="assets/cv/Harshit_Prajapat_CV.pdf" download="Harshit_Prajapat_CV.pdf">Download my CV</a>
+        </div>
+        <p class="footer">© 2026 Harshit Prajapat</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Scripts: three.js (3D background) then our own code -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

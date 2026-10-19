@@ -1,0 +1,381 @@
+/* ==========================================================================
+   HARSHIT PRAJAPAT PORTFOLIO  |  css/main.css
+   --------------------------------------------------------------------------
+   This file holds the MAIN styles. Phone / tablet / big-screen fixes are in
+   css/responsive.css.
+
+   HOW THIS FILE IS ORGANISED
+     1. LIGHT MODE colors   (default look)
+     2. DARK MODE colors    (used when <html data-theme="dark">)
+     3. Base + typography
+     4. Components   (buttons, top bar, side rail, image slots, frames)
+     5. Sections     (in the same order as the page, top to bottom)
+     6. LIGHT MODE only tweaks
+     7. DARK MODE only tweaks
+     8. Motion settings
+
+   TIP: Most colors come from the variables in parts 1 and 2.
+        Change a color there and it updates everywhere.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. LIGHT MODE  (default)
+   ========================================================================== */
+:root {
+  color-scheme: light;
+  --bg: #e8ebf1;                    /* page background */
+  --surface: #f5f6f9;               /* cards */
+  --surface-2: #ffffff;             /* buttons, top bar */
+  --ink: #0b0f1a;                   /* main text */
+  --muted: #556074;                 /* soft text */
+  --line: rgba(11, 15, 26, .15);    /* thin borders */
+  --accent: #3347ff;                /* the one brand color */
+  --accent-soft: rgba(51, 71, 255, .1);
+  --shadow: 0 28px 50px -28px rgba(20, 30, 70, .4);
+  --ok: #1fa67a;                    /* green "open to work" dot */
+  --grid-opacity: .35;              /* faint grid lines in the background */
+}
+
+
+/* ==========================================================================
+   2. DARK MODE  (switched on by the moon button in the top bar)
+   ========================================================================== */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #090b11;
+  --surface: #10131c;
+  --surface-2: #171b28;
+  --ink: #e8ebf5;
+  --muted: #98a1b8;
+  --line: rgba(232, 235, 245, .15);
+  --accent: #8b9aff;
+  --accent-soft: rgba(139, 154, 255, .14);
+  --shadow: 0 28px 50px -28px #000;
+  --ok: #39d29f;
+  --grid-opacity: .22;
+}
+
+
+/* ==========================================================================
+   3. BASE + TYPOGRAPHY   (same in light and dark)
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+
+html {
+  /* Text size grows a little on big screens and shrinks on small ones */
+  font-size: clamp(15px, .55vw + 11px, 20px);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;               /* stops sideways scrolling without breaking sticky */
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1rem/1.65 "DM Sans", system-ui, sans-serif;
+}
+
+/* Faint grid behind everything */
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: -1;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 5rem 5rem;
+  opacity: var(--grid-opacity);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+          mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+}
+
+img { max-width: 100%; display: block; }
+a   { color: inherit; }
+ol, ul { list-style: none; padding: 0; }
+main { overflow-x: clip; }       /* anything that sticks out sideways is cut off, so the page never scrolls sideways */
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+h1, h2, h3 { font-family: "Unbounded", system-ui, sans-serif; font-weight: 600; }
+h1 { font-size: clamp(1.9rem, 4.2vw, 3.9rem); line-height: 1.08; letter-spacing: -.035em; margin-bottom: 1.2rem; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 3rem); line-height: 1.12; letter-spacing: -.03em; margin-bottom: .8rem; max-width: 20ch; }
+h3 { font-size: 1.15rem; line-height: 1.25; font-weight: 500; margin-bottom: .4rem; }
+
+.lead { color: var(--muted); max-width: 52ch; margin-bottom: clamp(1.2rem, 2.5vw, 2rem); font-size: 1.08rem; }
+
+/* Small line above each heading: "Chapter 03 · The process" */
+.chapter { display: flex; align-items: center; gap: .8rem; color: var(--muted); font-weight: 500; font-size: .9rem; margin-bottom: 1rem; }
+.chapter::before { content: ""; width: 2.2rem; height: 2px; background: var(--accent); }
+
+/* Page width + vertical spacing between sections */
+.wrap    { width: min(78rem, 100% - 2 * clamp(1.1rem, 4vw, 3rem)); margin-inline: auto; }
+.section { padding-block: clamp(1.4rem, 3.2vw, 3rem); }
+
+.skip-link { position: fixed; left: 1rem; top: -4rem; z-index: 100; padding: .6rem 1rem; border-radius: 99px; background: var(--ink); color: var(--bg); transition: top .2s; }
+.skip-link:focus { top: 1rem; }
+
+
+/* ==========================================================================
+   4. COMPONENTS
+   ========================================================================== */
+
+/* ---- 4.1 Buttons ------------------------------------------------------- */
+.btn { display: inline-block; padding: .72rem 1.3rem; border-radius: 99px; border: 1px solid var(--line); text-decoration: none; font-weight: 700; font-size: .95rem; background: var(--surface-2); transition: transform .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn--solid { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn-row { display: flex; gap: .8rem; flex-wrap: wrap; }
+
+/* ---- 4.2 Scroll progress line (very top of the page) ------------------- */
+#progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 40; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+
+/* ---- 4.2b 3D background canvas -------------------------------------------
+   Fixed behind the whole page. It must NOT take space in the layout.       */
+#bg3d { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; display: block; }
+
+/* ---- 4.3 Top bar -------------------------------------------------------- */
+.topbar { position: fixed; top: .8rem; left: 0; right: 0; z-index: 30; pointer-events: none; }
+.topbar__inner {
+  pointer-events: auto;
+  width: min(78rem, 100% - 1.6rem); margin: auto;
+  display: flex; align-items: center; gap: .9rem;
+  padding: .5rem .5rem .5rem 1.2rem;
+  border-radius: 99px; border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface-2) 72%, transparent);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+}
+.logo { font: 600 .95rem "Unbounded", sans-serif; margin-right: auto; text-decoration: none; white-space: nowrap; }
+.topbar__nav { display: flex; gap: 1.4rem; margin-right: .6rem; }
+.topbar__nav a { text-decoration: none; color: var(--muted); font-size: .95rem; }
+.topbar__nav a:hover { color: var(--ink); }
+
+.icon-btn { width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); display: grid; place-items: center; cursor: pointer; }
+/* Show the sun in dark mode, the moon in light mode */
+.icon-btn .icon-sun  { display: none; }
+[data-theme="dark"] .icon-btn .icon-sun  { display: block; }
+[data-theme="dark"] .icon-btn .icon-moon { display: none; }
+
+/* ---- 4.4 Chapter rail (dots on the right side) -------------------------
+   All dots sit on ONE straight line. Only the active dot slides a little
+   to the left and stretches into a pill.                                   */
+.rail { position: fixed; right: 1.1rem; top: 50%; transform: translateY(-50%); z-index: 25; display: flex; flex-direction: column; align-items: center; gap: .95rem; }
+.rail__dot { position: relative; display: block; width: .5rem; height: .5rem; border-radius: 99px; background: var(--muted); opacity: .55; transition: transform .3s, width .3s, opacity .3s, background .3s; }
+.rail__dot::after { /* name tag, appears on hover or keyboard focus */
+  content: attr(data-label); position: absolute; right: 150%; top: 50%; transform: translateY(-50%);
+  padding: .1rem .55rem; border-radius: 99px; background: var(--surface-2); border: 1px solid var(--line);
+  font-size: .75rem; line-height: 1.5; color: var(--ink); white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .2s;
+}
+.rail__dot:hover::after, .rail__dot:focus-visible::after { opacity: 1; }
+.rail__dot.is-active { width: 1.35rem; background: var(--accent); opacity: 1; transform: translateX(-.55rem); }
+
+/* ---- 4.5 Frame: small corner brackets around an image ------------------ */
+.frame { position: relative; }
+.frame::before, .frame::after { content: ""; position: absolute; width: 1.6rem; height: 1.6rem; border: 2px solid var(--accent); pointer-events: none; z-index: 3; }
+.frame::before { left: -.5rem; top: -.5rem; border-right: 0; border-bottom: 0; border-radius: .5rem 0 0 0; }
+.frame::after  { right: -.5rem; bottom: -.5rem; border-left: 0; border-top: 0; border-radius: 0 0 .5rem 0; }
+
+/* ---- 4.6 Image slot + placeholder ---------------------------------------
+   Every picture on the page is a .slot.
+   - If the image file exists, it fills the slot.
+   - If the file is missing, a dashed box shows WHAT to add, WHAT TYPE it
+     should be, and WHERE to save it. (See the README for the full list.)   */
+.slot { position: relative; overflow: hidden; border-radius: 1rem; background: var(--surface); aspect-ratio: var(--ratio, 16 / 10); }
+.slot--fill { aspect-ratio: auto; width: 100%; height: 100%; }
+.slot > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+.ph { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; padding: .8rem; text-align: center;
+  border: 2px dashed var(--accent); border-radius: inherit; color: var(--ink);
+  background: repeating-linear-gradient(45deg, var(--accent-soft) 0 .6rem, transparent .6rem 1.2rem), var(--surface); }
+.ph svg { color: var(--accent); flex: none; }
+.ph b    { font-size: .85rem; color: var(--accent); }
+.ph span { font-size: .8rem; line-height: 1.35; max-width: 32ch; }
+.ph code { font: 600 .72rem/1.35 ui-monospace, Menlo, Consolas, monospace; color: var(--muted); word-break: break-all; }
+.slot--empty .ph { display: flex; }            /* shown only when the image file is missing */
+.slot--mini .ph span, .slot--mini .ph b { display: none; }   /* tiny slots show only the file path */
+
+
+/* ==========================================================================
+   5. SECTIONS  (same order as index.html)
+   ========================================================================== */
+
+/* ---- 5.1 HELLO (hero) --------------------------------------------------- */
+.hero { display: flex; align-items: center; padding: 6.2rem 0 1.5rem; }
+.hero__grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
+.hero__sub { font-size: 1.2rem; color: var(--muted); max-width: 44ch; margin-bottom: 1.8rem; }
+.hero__status { display: inline-flex; align-items: center; gap: .6rem; margin-top: 1.8rem; color: var(--muted); font-size: .92rem; }
+.hero__status i { width: .55rem; height: .55rem; border-radius: 50%; background: var(--ok); animation: pulse 2s infinite; }
+
+/* 3D stack of images (tilts with the mouse, see js/main.js) */
+.stage { position: relative; width: min(100%, 34rem); aspect-ratio: 1 / 1; justify-self: end; perspective: 1400px; }
+.rig { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(var(--rx, 8deg)) rotateY(var(--ry, -16deg)); transition: transform .25s ease-out; }
+.layer { position: absolute; transform-style: preserve-3d; }
+.layer--portrait { left: 20%; top: 4%; width: 60%; height: 84%; transform: translateZ(0); }
+.layer--portrait .slot { border-radius: 1.6rem; border: 1px solid var(--line); box-shadow: var(--shadow); background: linear-gradient(160deg, var(--surface-2), var(--accent-soft)); }
+.layer--portrait .slot > img { object-position: top; }
+.layer--card-a { left: -4%; top: 50%; width: 52%; transform: translateZ(90px) rotateY(8deg); }
+.layer--card-b { right: -2%; top: 8%; width: 46%; transform: translateZ(-60px) rotateY(-6deg); }
+.layer--card-a .slot, .layer--card-b .slot { border: 1px solid var(--line); box-shadow: var(--shadow); }
+
+.chip { display: flex; gap: .5rem; align-items: center; padding: .55rem .9rem; border-radius: 99px; border: 1px solid var(--line); background: color-mix(in srgb, var(--surface-2) 80%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); font-weight: 700; font-size: .85rem; box-shadow: var(--shadow); animation: float 6s ease-in-out infinite; }
+.chip svg { color: var(--accent); }
+.chip--1 { left: 4%;  top: 10%;   transform: translateZ(140px); }
+.chip--2 { right: 2%; top: 56%;   transform: translateZ(120px); animation-delay: -2s; }
+.chip--3 { left: 30%; bottom: 0;  transform: translateZ(160px); animation-delay: -4s; }
+.chip--4 { right: 22%; top: 2%;   transform: translateZ(110px); animation-delay: -1s; }
+
+/* ---- 5.2 Numbers strip -------------------------------------------------- */
+.stats { border-block: 1px solid var(--line); background: var(--surface); padding: 1.6rem 0; }
+.stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.stats b { display: block; font: 600 clamp(1.6rem, 3.4vw, 2.8rem) "Unbounded", sans-serif; letter-spacing: -.03em; }
+.stats span { color: var(--muted); font-size: .95rem; }
+
+/* ---- 5.3 Scroll scenes (shared by "Problem", "Gallery", "Craft") ----------
+   .scrub  = the tall block you scroll through
+   .pin    = the part that stays on screen while you scroll
+   --run   = how much extra scrolling the scene takes (set per section)       */
+.scrub { position: relative; scroll-margin-top: 4.5rem; }
+.scrub::after { content: ""; display: block; height: var(--run, 120vh); }
+.pin { position: sticky; top: 5.5rem; display: flex; flex-direction: column; justify-content: center; }  /* "top" is fine-tuned in js/main.js */
+.scrub--free .pin { position: static; }          /* tiny screens: no pinning, normal scroll */
+.scrub--free::after { display: none; }
+.two-col { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
+
+/* ---- 5.4 PROBLEM (messy -> clear) -------------------------------------- */
+.swap { position: relative; min-height: 11rem; }
+.swap > div { transition: opacity .5s, transform .5s; }
+.swap p { color: var(--muted); font-size: 1.1rem; max-width: 40ch; }
+.swap__after { position: absolute; inset: 0; opacity: 0; transform: translateY(14px); }
+.swap.is-clear .swap__before { opacity: 0; transform: translateY(-14px); }
+.swap.is-clear .swap__after  { opacity: 1; transform: none; }
+
+.scene { position: relative; aspect-ratio: 4 / 3.1; perspective: 1100px;
+         width: min(100%, calc((100svh - 13rem) * 1.29)); margin-inline: auto; }   /* never taller than the screen */
+.scene__old { position: absolute; width: 62%; left: 19%; top: 14%; will-change: transform, opacity; }
+.scene__old .slot { box-shadow: var(--shadow); }
+.scene__new { position: absolute; width: 70%; left: 15%; top: 8%; opacity: 0; }
+.scene__new .slot { border: 1px solid var(--line); box-shadow: var(--shadow); }
+.scene__caption { margin-top: .6rem; font-size: .8rem; color: var(--muted); }
+
+/* ---- 5.5 PROCESS (4 steps) ---------------------------------------------- */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; position: relative; --progress: 0; counter-reset: step; }
+.steps::before, .steps::after { content: ""; position: absolute; left: 0; right: 0; top: 1.75rem; height: 2px; background: var(--line); }
+.steps::after { background: var(--accent); transform-origin: left; transform: scaleX(var(--progress)); }
+.step { counter-increment: step; }
+.step::before { content: "Step " counter(step); display: block; order: -1; font-size: .85rem; font-weight: 500; color: var(--muted); margin-bottom: .2rem; }
+.step { display: flex; flex-direction: column; }
+.step .icon-box { order: -2; }
+.icon-box { width: 3.5rem; height: 3.5rem; border-radius: 1rem; display: grid; place-items: center; background: var(--surface-2); border: 1px solid var(--line); color: var(--accent); position: relative; z-index: 1; margin-bottom: 1rem; transition: transform .3s; }
+.step:hover .icon-box, .skill:hover .icon-box { transform: rotate(-6deg) scale(1.08); }
+.step p, .skill p, .role p, .timeline p { color: var(--muted); }
+
+/* ---- 5.6 PROOF (case studies) ------------------------------------------- */
+.cases { display: grid; gap: clamp(1.2rem, 2.5vw, 2rem); }
+.case { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(1.2rem, 3vw, 3rem); align-items: center; padding: clamp(1rem, 2vw, 1.6rem); background: var(--surface); border: 1px solid var(--line); border-radius: 1.4rem; }
+.case:nth-child(even) { grid-template-columns: 1fr 1.15fr; }
+.case:nth-child(even) .case__media { order: 2; }
+.case__media { position: relative; transition: transform .15s; transform-style: preserve-3d; }
+.case__media .slot { --ratio: 13 / 10; }
+.case__media .slot--small { position: absolute; right: -.4rem; bottom: -.5rem; width: 36%; z-index: 2; border: 2px solid var(--accent); box-shadow: var(--shadow); transform: translateZ(40px); }
+.case__tag { color: var(--accent); font-weight: 700; font-size: .9rem; margin-bottom: .5rem; }
+.case h3 { font-size: 1.7rem; margin-bottom: .6rem; }
+.case dt { font-weight: 700; margin-top: .8rem; }
+.case dd { margin: 0; color: var(--muted); }
+
+/* ---- 5.7 GALLERY (row slides sideways while you scroll) ----------------- */
+.gallery .pin { gap: 1.6rem; }
+.gallery h2 { max-width: none; }
+.track { display: flex; gap: 1.3rem; padding: 0 1.5rem; width: max-content; will-change: transform; }
+.track .slot { flex: none; height: clamp(14rem, 50vh, 30rem); border: 1px solid var(--line); box-shadow: var(--shadow); }
+
+/* ---- 5.8 CRAFT (design vs code slider + points) ------------------------- */
+.craft__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.compare { position: relative; width: min(100%, calc((100svh - 19rem) * 1.6)); min-width: 16rem; aspect-ratio: 16 / 10; margin-inline: auto; }   /* never taller than the screen */
+.compare__layer { position: absolute; inset: 0; border-radius: 1rem; overflow: hidden; }
+.compare__layer--top { clip-path: inset(0 50% 0 0); }          /* changed by js/main.js while you scroll */
+/* While images are missing, keep each placeholder text inside its own visible half */
+.compare__layer:not(.compare__layer--top) .ph { padding-left: 52%; }
+.compare__layer--top .ph { padding-right: 52%; }
+.compare__handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--accent); z-index: 4; }
+.compare__handle i { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; }
+.compare__label { position: absolute; top: .7rem; z-index: 5; padding: .25rem .75rem; border-radius: 99px; background: var(--surface-2); border: 1px solid var(--line); font-size: .78rem; font-weight: 700; }
+.compare__label--left { left: .7rem; }
+.compare__label--right { right: .7rem; }
+.points { display: grid; gap: 1.3rem; }
+.points li { display: grid; grid-template-columns: auto 1fr; gap: .2rem 1rem; align-items: start; }
+.points .icon-box { grid-row: span 2; width: 3rem; height: 3rem; margin: 0; }
+.points h3 { font-size: 1.05rem; margin: 0; }
+.points p { color: var(--muted); font-size: .98rem; }
+
+/* ---- 5.9 SKILLS ---------------------------------------------------------- */
+.skills__grid, .roles__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.3rem; }
+.skill, .role { padding: 1.4rem; border: 1px solid var(--line); border-radius: 1.3rem; background: var(--surface); }
+.skill .icon-box { margin-bottom: 1rem; }
+.chips { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
+.chips span { padding: .45rem 1rem; border: 1px solid var(--line); border-radius: 99px; font-size: .9rem; background: var(--surface); }
+
+/* ---- 5.10 ROLES ----------------------------------------------------------- */
+.roles__grid { grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
+.role { transition: transform .3s, border-color .3s; }
+.role:hover { transform: translateY(-6px); border-color: var(--accent); }
+.role .slot { --ratio: 4 / 3; }
+.role__body { margin-top: 1.3rem; }
+.role .icon-box { width: 3rem; height: 3rem; margin-bottom: .8rem; }
+
+/* ---- 5.11 PATH (timeline) -------------------------------------------------- */
+.timeline { position: relative; padding-left: 2rem; display: grid; gap: 2rem; max-width: 52rem; --progress: 0; }
+.timeline::before, .timeline::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--line); }
+.timeline::after { background: var(--accent); transform-origin: top; transform: scaleY(var(--progress)); }
+.timeline li { position: relative; }
+.timeline li::before { content: ""; position: absolute; left: -2.45rem; top: .45rem; width: .9rem; height: .9rem; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); }
+.timeline small { color: var(--accent); font-weight: 700; }
+.timeline h3 { font-size: 1.05rem; }
+.timeline .company { color: var(--ink); font-weight: 700; margin-bottom: .3rem; }
+
+/* ---- 5.12 CONTACT -------------------------------------------------------- */
+.contact { text-align: center; }
+.contact h2, .contact .lead { margin-inline: auto; }
+.contact .chapter { justify-content: center; }
+.contact .btn-row { justify-content: center; }
+.footer { color: var(--muted); font-size: .9rem; margin-top: 2.4rem; }
+
+/* ---- Fade-in when an item scrolls into view (class added by js/main.js) -- */
+[data-reveal] { opacity: 0; transform: perspective(900px) rotateX(10deg) translateY(2.2rem); transition: opacity .7s, transform .7s; }
+[data-reveal].is-visible { opacity: 1; transform: none; }
+.skill.is-visible, .role.is-visible { transition: transform .18s, border-color .3s, opacity .7s; }   /* quicker response for mouse tilt */
+
+
+/* ==========================================================================
+   6. LIGHT MODE ONLY tweaks
+   ========================================================================== */
+:root:not([data-theme="dark"]) .topbar__inner { box-shadow: 0 10px 30px -18px rgba(20, 30, 70, .35); }
+:root:not([data-theme="dark"]) .ph { background: repeating-linear-gradient(45deg, rgba(51, 71, 255, .08) 0 .6rem, transparent .6rem 1.2rem), #fff; }
+:root:not([data-theme="dark"]) .case,
+:root:not([data-theme="dark"]) .skill,
+:root:not([data-theme="dark"]) .role { box-shadow: 0 18px 40px -30px rgba(20, 30, 70, .35); }
+
+
+/* ==========================================================================
+   7. DARK MODE ONLY tweaks
+   ========================================================================== */
+[data-theme="dark"] .topbar__inner { background: color-mix(in srgb, var(--surface) 78%, transparent); }
+[data-theme="dark"] .ph { background: repeating-linear-gradient(45deg, rgba(139, 154, 255, .12) 0 .6rem, transparent .6rem 1.2rem), var(--surface); }
+[data-theme="dark"] .btn { background: var(--surface-2); }
+[data-theme="dark"] .btn--solid { background: var(--ink); color: #090b11; }
+[data-theme="dark"] .compare__handle i { color: #090b11; }
+[data-theme="dark"] .case, [data-theme="dark"] .skill, [data-theme="dark"] .role { border-color: rgba(232, 235, 245, .2); }
+
+
+/* ==========================================================================
+   8. MOTION SETTINGS
+   ========================================================================== */
+@keyframes pulse { 50% { opacity: .35; } }
+@keyframes float { 50% { translate: 0 -10px; } }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+
+/* ==========================================================================
+   9. ICONS  (icons are defined once in index.html and reused with <use>)
+   ========================================================================== */
+.icon { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
